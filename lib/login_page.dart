@@ -20,6 +20,8 @@ class Login_Page extends StatefulWidget {
 }
 
 class _Login_PageState extends State<Login_Page> {
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,7 +50,8 @@ class _Login_PageState extends State<Login_Page> {
                         fillColor: Colors.white,
                         hintText: 'email ',
                         labelStyle: TextStyle(fontSize: 30.0,),
-                        prefixIcon: Icon(Icons.person_outline,),
+                        prefixIcon: Icon(Icons.email_outlined,),
+                        // errorText: text.isEmpty?"Enter your name first":null,
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                     ),
                     ),
