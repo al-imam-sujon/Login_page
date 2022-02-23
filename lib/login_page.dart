@@ -127,7 +127,7 @@ class _Login_PageState extends State<Login_Page> {
                           Navigator.push(context, MaterialPageRoute(builder: (_) => Register_Page()));
                         },
                             child: Text(' Register account ',
-                              style: TextStyle(fontSize: 20.0,color: Colors.amberAccent,
+                              style: TextStyle(fontSize: 18.0,color: Colors.amberAccent,
                               decoration: TextDecoration.underline),)),
 
                           TextButton(onPressed: (){
@@ -135,7 +135,7 @@ class _Login_PageState extends State<Login_Page> {
                           },
 
                               child: Text('Forgot Password ?',
-                              style: TextStyle(fontSize: 20.0,color: Colors.amberAccent,
+                              style: TextStyle(fontSize: 18.0,color: Colors.amberAccent,
                               decoration: TextDecoration.underline),))
                       ],
                     )
