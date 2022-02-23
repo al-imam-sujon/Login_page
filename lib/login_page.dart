@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:login_page/regsiter_page.dart';
+import 'package:login_page/register_page.dart';
 
 
 
@@ -20,7 +20,8 @@ class Login_Page extends StatefulWidget {
 }
 
 class _Login_PageState extends State<Login_Page> {
-
+  String text= '';
+  bool _secure = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +55,17 @@ class _Login_PageState extends State<Login_Page> {
                         // errorText: text.isEmpty?"Enter your name first":null,
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                     ),
+
+                      onChanged: (Value){
+                        text = Value;
+                      },
+                      onSubmitted: (Value){
+                        setState(() {
+                          text = Value;
+                        });
+                        print(Value);
+                      },
+
                     ),
 
                     SizedBox(
@@ -61,7 +73,7 @@ class _Login_PageState extends State<Login_Page> {
                     ),
 
                     TextField(
-                      obscureText: true,
+                      obscureText: _secure,
                       obscuringCharacter: '*',
                       decoration: InputDecoration(
                         filled: true,
@@ -70,6 +82,15 @@ class _Login_PageState extends State<Login_Page> {
                         labelStyle: TextStyle(fontSize: 30.0,),
                         prefixIcon: Icon(Icons.lock_open,),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                        suffixIcon: IconButton(
+                          icon: Icon(_secure?Icons.visibility: Icons.visibility_off),
+                          onPressed: () {
+                            setState(() {
+                              _secure = !_secure;
+                            });
+                            print('Value');
+                          },
+                        ),
                       ),
                     ),
 
@@ -103,9 +124,9 @@ class _Login_PageState extends State<Login_Page> {
                         TextButton(onPressed: (){
                           //Navigator.push(context, CupertinoPageRoute(builder: (_)=> Regsiter_Page()));
 
-                          Navigator.push(context, MaterialPageRoute(builder: (_) => Regsiter_Page()));
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => Register_Page()));
                         },
-                            child: Text(' Sign Up !',
+                            child: Text(' Register account ',
                               style: TextStyle(fontSize: 20.0,color: Colors.amberAccent,
                               decoration: TextDecoration.underline),)),
 
@@ -113,7 +134,7 @@ class _Login_PageState extends State<Login_Page> {
                             // Navigator.push(context, MaterialPageRoute(builder: (builder) => NewPage()));
                           },
 
-                              child: Text('Forgot Password !',
+                              child: Text('Forgot Password ?',
                               style: TextStyle(fontSize: 20.0,color: Colors.amberAccent,
                               decoration: TextDecoration.underline),))
                       ],

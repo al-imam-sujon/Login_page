@@ -3,14 +3,22 @@ import 'package:flutter/material.dart';
 import 'login_page.dart';
 
 
-class Regsiter_Page extends StatefulWidget {
-  const Regsiter_Page({Key? key}) : super(key: key);
+class Register_Page extends StatefulWidget {
+  const Register_Page({Key? key}) : super(key: key);
 
   @override
-  _Regsiter_PageState createState() => _Regsiter_PageState();
+  _Register_PageState createState() => _Register_PageState();
 }
 
-class _Regsiter_PageState extends State<Regsiter_Page> {
+class _Register_PageState extends State<Register_Page> {
+
+
+
+  String text= '';
+  bool _secure = false;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +36,8 @@ class _Regsiter_PageState extends State<Regsiter_Page> {
             Container(
               padding: EdgeInsets.only(left: 30.0,top: 55.2),
               child: Text('Create Account',
-                style: TextStyle(fontSize: 50.0,fontWeight: FontWeight.bold,color: Colors.amber),),
+                style: TextStyle(fontSize: 50.0,
+                    fontWeight: FontWeight.bold,color: Colors.amber),),
             ),
             SingleChildScrollView(
               child: Container(
@@ -46,6 +55,16 @@ class _Regsiter_PageState extends State<Regsiter_Page> {
                         prefixIcon: Icon(Icons.person_outline,),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                       ),
+                      onChanged: (Value){
+                        text = Value;
+                      },
+                      onSubmitted: (Value){
+                        setState(() {
+                          text = Value;
+                        });
+                        print(Value);
+                      },
+
                     ),
                     SizedBox(
                       height: 20,
@@ -75,7 +94,11 @@ class _Regsiter_PageState extends State<Regsiter_Page> {
                         labelStyle: TextStyle(fontSize: 30.0,),
                         prefixIcon: Icon(Icons.lock_open,),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+
+
                       ),
+
+
                     ),
 
                     SizedBox(
@@ -83,16 +106,41 @@ class _Regsiter_PageState extends State<Regsiter_Page> {
                     ),
 
                     TextField(
-                      obscureText: true,
+
                       obscuringCharacter: '*',
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
                         hintText: 'confarm password ',
+
                         labelStyle: TextStyle(fontSize: 30.0,),
                         prefixIcon: Icon(Icons.lock_open,),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+
+                        suffixIcon: IconButton(
+                          icon: Icon(_secure?Icons.visibility:Icons.visibility_off),
+                          onPressed: (){
+                            setState(() {
+                              _secure = !_secure;
+                            });
+                          },
+                        ),
+                        errorText: text.isEmpty?'Empty' : null,
                       ),
+
+
+                      onChanged: (Value){
+                        text = Value;
+                        },
+                      onSubmitted: (Value){
+                        setState(() {
+                          text = Value;
+                        });
+                        print(Value);
+                        },
+
+                      obscureText: _secure,
+
                     ),
 
 
@@ -200,6 +248,7 @@ class _Regsiter_PageState extends State<Regsiter_Page> {
 //               });
 //               print(Value);
 //             },
+//
 //
 //           ),
 //
